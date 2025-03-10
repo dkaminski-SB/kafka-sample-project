@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="9c77f802-c5aa-4c2a-91d8-9f01a2ed5c40" discardOkResults="false" failOnError="false" failTestCaseOnErrors="false" keepSession="false" name="example.noSchema.topc - Consumer" searchProperties="true" timeout="0">
+  <con:settings>
+    <con:setting id="9c77f802-c5aa-4c2a-91d8-9f01a2ed5c40fileName">example.noSchema.topc---Consumer</con:setting>
+  </con:settings>
+  <con:testStep type="multiConfigureTestStep" name="API Subscriber" id="1295d557-43fd-498e-9d5c-1e86df75f134">
+    <con:settings/>
+    <con:config activeStep="kafkaSubscribeTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaSubscribeStep>
+        <con:operationId>704f0e62-a768-4204-9360-6fd7ac276a86</con:operationId>
+        <con:operationName>Subscribe</con:operationName>
+        <con:channelName>example.noSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry/>
+        <con:messageType>JSON</con:messageType>
+        <con:keyType>JSON</con:keyType>
+        <con:closeConditionType>ANY_CONDITION</con:closeConditionType>
+        <con:maxIdleTime>10</con:maxIdleTime>
+        <con:maxMessagesReceived>5</con:maxMessagesReceived>
+        <con:maxRunTime>20</con:maxRunTime>
+        <con:ignoreMessagesBeforeConnect>false</con:ignoreMessagesBeforeConnect>
+      </con:kafkaSubscribeStep>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" id="c68e7d55-f5f6-4a71-85db-4b9ae749d0a9" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="example.noSchema.topic - Producer - Single request" searchProperties="true" timeout="0">
+  <con:settings id="c2fa1e86-a330-4db3-a1f1-9a4ba81604cd">
+    <con:setting id="c68e7d55-f5f6-4a71-85db-4b9ae749d0a9fileName">example.noSchema.topic---Producer---Single-request</con:setting>
+  </con:settings>
+  <con:testStep type="multiConfigureTestStep" name="API Publisher - Expected message" id="2d613682-0643-4c78-a4b8-d671682c9afb">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaPublishTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaPublishStep>
+        <con:operationId>e90657be-e01f-4a0c-b8b2-065f64462409</con:operationId>
+        <con:operationName>Publish</con:operationName>
+        <con:channelName>example.noSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry/>
+        <con:messageType>JSON</con:messageType>
+        <con:message>{
+   "favorite_city" : "Berlin",
+   "favorite_number" : 4,
+   "favorite_color" : "Black"
+}</con:message>
+        <con:parameters>
+          <con:parameter>
+            <con:name>Parameter</con:name>
+            <con:value xsi:nil="true"/>
+            <con:type>Header</con:type>
+          </con:parameter>
+        </con:parameters>
+      </con:kafkaPublishStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="multiConfigureTestStep" name="API Publisher - Other message" id="3b7d9d49-8beb-4193-a32d-96eec2d44a0a" disabled="true">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaPublishTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaPublishStep>
+        <con:operationId>e90657be-e01f-4a0c-b8b2-065f64462409</con:operationId>
+        <con:operationName>Publish</con:operationName>
+        <con:channelName>example.noSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry/>
+        <con:messageType>JSON</con:messageType>
+        <con:message>{
+   "favorite_city" : "Oslo",
+   "favorite_number" : 4,
+   "favorite_color" : "Pink"
+}</con:message>
+        <con:parameters>
+          <con:parameter>
+            <con:name>Key</con:name>
+            <con:value xsi:nil="true"/>
+            <con:type>Kafka</con:type>
+          </con:parameter>
+          <con:parameter>
+            <con:name>Partition</con:name>
+            <con:value>0</con:value>
+            <con:type>Kafka</con:type>
+          </con:parameter>
+        </con:parameters>
+      </con:kafkaPublishStep>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

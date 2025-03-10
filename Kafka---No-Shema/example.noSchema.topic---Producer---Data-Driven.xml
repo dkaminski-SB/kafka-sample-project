@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" id="73ebddb4-264a-43ff-8582-9fa0f7ea1ef6" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="example.noSchema.topic - Producer - Data Driven" searchProperties="true" timeout="0">
+  <con:settings id="c2fa1e86-a330-4db3-a1f1-9a4ba81604cd">
+    <con:setting id="73ebddb4-264a-43ff-8582-9fa0f7ea1ef6fileName">example.noSchema.topic---Producer---Data-Driven</con:setting>
+  </con:settings>
+  <con:testStep type="datasource" name="Publisher Values" id="be34e1e4-5871-4503-9326-4ab7581be8d1">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:DataSourceStep">
+      <con:dataSource type="Data Generator">
+        <con:configuration>
+          <generatedDataCount>7</generatedDataCount>
+          <generatorsTotalNumber>3</generatorsTotalNumber>
+          <lastSelectedProperty>0</lastSelectedProperty>
+          <GeneratorType0>CITY</GeneratorType0>
+          <PropertyName0>setCity</PropertyName0>
+          <repetitionCountsetCity>0</repetitionCountsetCity>
+          <repeatValuessetCity>false</repeatValuessetCity>
+          <GeneratorType1>INT</GeneratorType1>
+          <PropertyName1>setNo</PropertyName1>
+          <repetitionCountsetNo>0</repetitionCountsetNo>
+          <repeatValuessetNo>false</repeatValuessetNo>
+          <IntegerDataGeneratorMinValuesetNo>1</IntegerDataGeneratorMinValuesetNo>
+          <IntegerDataGeneratorMaxValuesetNo>10</IntegerDataGeneratorMaxValuesetNo>
+          <IntegerDataGeneratorStepValuesetNo>1</IntegerDataGeneratorStepValuesetNo>
+          <IntegerDataGeneratorConsequentValuessetNo>false</IntegerDataGeneratorConsequentValuessetNo>
+          <GeneratorType2>SET</GeneratorType2>
+          <PropertyName2>setColor</PropertyName2>
+          <repetitionCountsetColor>0</repetitionCountsetColor>
+          <repeatValuessetColor>false</repeatValuessetColor>
+          <ValueFromSetIsSequenceValuesetColor>false</ValueFromSetIsSequenceValuesetColor>
+          <ValueFromSetStringssetColor>Purple</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Black</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Yellow</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Red</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>White</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Blue</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Green</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Pink</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Orange</ValueFromSetStringssetColor>
+          <escapeSpaceSequence/>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>setCity</con:property>
+      <con:property>setNo</con:property>
+      <con:property>setColor</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+      <con:stopDatasourceExhausted>false</con:stopDatasourceExhausted>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="multiConfigureTestStep" name="API Publisher - Random messages" id="6b297900-9a50-4393-9529-a1cdd92ac176">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaPublishTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaPublishStep>
+        <con:operationId>e90657be-e01f-4a0c-b8b2-065f64462409</con:operationId>
+        <con:operationName>Publish</con:operationName>
+        <con:channelName>example.noSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry/>
+        <con:messageType>JSON</con:messageType>
+        <con:keyType>JSON</con:keyType>
+        <con:message>{
+   "favorite_city" : "${Publisher Values#setCity}",
+   "favorite_number" : ${Publisher Values#setNo},
+   "favorite_color" : "${Publisher Values#setColor}"
+}</con:message>
+        <con:parameters>
+          <con:parameter>
+            <con:name>Parameter</con:name>
+            <con:value xsi:nil="true"/>
+            <con:type>Header</con:type>
+          </con:parameter>
+        </con:parameters>
+      </con:kafkaPublishStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="delay" name="Wait for next Publish" id="129231af-b0cc-4693-885d-572b2367ade7">
+    <con:settings/>
+    <con:config>
+      <delay>1000</delay>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="Data Source Loop" id="2278ad85-9354-4357-9074-1619491dfb9f">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>Publisher Values</dataSourceStep>
+      <targetStep>API Publisher - Random messages</targetStep>
+      <discardResults>true</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>be34e1e4-5871-4503-9326-4ab7581be8d1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6b297900-9a50-4393-9529-a1cdd92ac176</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>129231af-b0cc-4693-885d-572b2367ade7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2278ad85-9354-4357-9074-1619491dfb9f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

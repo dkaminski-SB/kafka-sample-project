@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:MessageDrivenService" id="3b509981-9754-4432-95c8-61002ea848ce" name="Kafka Broker0" type="messagedrivenservice">
+  <con:settings id="4c541f25-6a30-457c-b7c4-4fefa759cf4f">
+    <con:setting id="3b509981-9754-4432-95c8-61002ea848cefileName">Kafka-Broker0</con:setting>
+  </con:settings>
+  <con:definitionCache/>
+  <con:endpoints>
+    <con:endpoint>localhost:9092</con:endpoint>
+  </con:endpoints>
+</con:interface>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite xmlns:con="http://eviware.com/soapui/config" id="865fb449-c8ec-4374-9609-e9e915b33664" name="Kafka - No Shema">
+  <con:settings id="28198279-e3b7-4789-8f80-b9500e0b9de6">
+    <con:setting id="865fb449-c8ec-4374-9609-e9e915b33664fileName">Kafka---No-Shema</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testSuite>

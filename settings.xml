@@ -3,6 +3,7 @@
   <con:settings>
     <con:setting id="1c248cbd-90b1-4605-a77b-2b540417da52fileName">kafka-sample-project</con:setting>
   </con:settings>
+  <con:requirements/>
   <con:properties/>
   <con:wssContainer/>
   <con:databaseConnectionContainer/>
@@ -40,4 +41,34 @@
   </con:eventHandlers>
   <con:authRepository/>
   <con:tags/>
+  <con:kafkaConnectionSettingsContainer>
+    <con:connectionSettings id="d12f7755-314a-4876-a053-3bb219e74245">
+      <con:subscribeProperties/>
+      <con:publishProperties/>
+      <con:schemaRegistry>
+        <con:url/>
+        <con:authProfile>No Authorization</con:authProfile>
+      </con:schemaRegistry>
+      <con:closeConditionType>ANY_CONDITION</con:closeConditionType>
+      <con:maxIdleTime>60</con:maxIdleTime>
+      <con:maxMessagesReceived>50</con:maxMessagesReceived>
+      <con:maxRunTime>60</con:maxRunTime>
+      <con:ignoreMessagesBeforeConnect>false</con:ignoreMessagesBeforeConnect>
+    </con:connectionSettings>
+  </con:kafkaConnectionSettingsContainer>
+  <con:schemasCache>
+    <con:schema id="b20549d3fd84ffb1c436790ce41de206" type="AVRO">
+      <con:content>{
+	"namespace": "example.avro",
+	"type": "record",
+	"name": "ExampleValue",
+	"fields": [
+		 {"name": "first_name", "type": "string"},
+		 {"name": "favorite_city", "type": "string"},
+		 {"name": "favorite_number",  "type": ["int", "null"]},
+		 {"name": "favorite_color", "type": ["string", "null"]}
+	]	
+}</con:content>
+    </con:schema>
+  </con:schemasCache>
 </con:soapui-project>
