@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" id="7675169b-b8d8-41d4-baf1-de0ab7d12ab3" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="example.avroSchema.topic - Producer" searchProperties="true" timeout="0">
+  <con:settings id="88c80ebc-56ca-483d-9d57-7130a4395867">
+    <con:setting id="6b2b3c12-6661-41b0-b06d-d76bab08f7aafileName">example.avroSchema.topic---Producer</con:setting>
+    <con:setting id="7675169b-b8d8-41d4-baf1-de0ab7d12ab3fileName">example.avroSchema.topic---Producer</con:setting>
+  </con:settings>
+  <con:testStep type="datasource" name="Publisher Values" id="e6935c5f-e926-4110-9ae7-dee0a9d1df26">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:DataSourceStep">
+      <con:dataSource type="Data Generator">
+        <con:configuration>
+          <generatedDataCount>5</generatedDataCount>
+          <generatorsTotalNumber>4</generatorsTotalNumber>
+          <lastSelectedProperty>3</lastSelectedProperty>
+          <GeneratorType0>CITY</GeneratorType0>
+          <PropertyName0>setCity</PropertyName0>
+          <repetitionCountsetCity>0</repetitionCountsetCity>
+          <repeatValuessetCity>false</repeatValuessetCity>
+          <GeneratorType1>INT</GeneratorType1>
+          <PropertyName1>setNo</PropertyName1>
+          <repetitionCountsetNo>0</repetitionCountsetNo>
+          <repeatValuessetNo>false</repeatValuessetNo>
+          <IntegerDataGeneratorMinValuesetNo>1</IntegerDataGeneratorMinValuesetNo>
+          <IntegerDataGeneratorMaxValuesetNo>10</IntegerDataGeneratorMaxValuesetNo>
+          <IntegerDataGeneratorStepValuesetNo>1</IntegerDataGeneratorStepValuesetNo>
+          <IntegerDataGeneratorConsequentValuessetNo>false</IntegerDataGeneratorConsequentValuessetNo>
+          <GeneratorType2>SET</GeneratorType2>
+          <PropertyName2>setColor</PropertyName2>
+          <repetitionCountsetColor>0</repetitionCountsetColor>
+          <repeatValuessetColor>false</repeatValuessetColor>
+          <ValueFromSetIsSequenceValuesetColor>false</ValueFromSetIsSequenceValuesetColor>
+          <ValueFromSetStringssetColor>Black</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Yellow</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Red</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>White</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Blue</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Green</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Purple</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Pink</ValueFromSetStringssetColor>
+          <ValueFromSetStringssetColor>Orange</ValueFromSetStringssetColor>
+          <GeneratorType3>NAME</GeneratorType3>
+          <PropertyName3>setName</PropertyName3>
+          <repetitionCountsetName>0</repetitionCountsetName>
+          <repeatValuessetName>false</repeatValuessetName>
+          <NameTypeName3>FirstName</NameTypeName3>
+          <NameGenderName3>Any</NameGenderName3>
+          <escapeSpaceSequence/>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>setName</con:property>
+      <con:property>setCity</con:property>
+      <con:property>setNo</con:property>
+      <con:property>setColor</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+      <con:stopDatasourceExhausted>false</con:stopDatasourceExhausted>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="multiConfigureTestStep" name="API Publisher" id="1182bfbc-b78c-4e69-80ab-faa4b946f2ab">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaPublishTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaPublishStep>
+        <con:operationId>930d694d-e88a-4196-92a1-28a2a2368a34</con:operationId>
+        <con:operationName>Publish</con:operationName>
+        <con:channelName>example.avroSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry>
+          <con:url>http://localhost:8085</con:url>
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:schemaRegistry>
+        <con:messageType>JSON via Avro (Confluent)</con:messageType>
+        <con:message>{
+   "first_name" : "${Publisher Values#setName}",
+   "favorite_city" : "${Publisher Values#setCity}",
+   "favorite_number" : {"int": ${Publisher Values#setNo}},
+   "favorite_color" : {"string": "${Publisher Values#setColor}"}
+}</con:message>
+        <con:parameters>
+          <con:parameter>
+            <con:name>Parameter</con:name>
+            <con:value xsi:nil="true"/>
+            <con:type>Header</con:type>
+          </con:parameter>
+        </con:parameters>
+      </con:kafkaPublishStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="delay" name="Wait for next Publish" id="bd60311b-3481-4938-993f-f893785e112f">
+    <con:settings/>
+    <con:config>
+      <delay>1000</delay>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="Data Source Loop" id="a5720585-e981-44f5-839f-ef6fbdaf9fc3">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>Publisher Values</dataSourceStep>
+      <targetStep>API Publisher</targetStep>
+      <discardResults>true</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:channel xmlns:con="http://eviware.com/soapui/config" name="example.avroSchema.topic" id="f7991da2-8cd4-464e-8875-fb811fa84778">
+  <con:settings>
+    <con:setting id="f7991da2-8cd4-464e-8875-fb811fa84778fileName">example.avroSchema.topic</con:setting>
+  </con:settings>
+  <con:subscribeOperation name="Subscribe" id="f0651d42-71f3-43e9-9b7a-de7c2998455f">
+    <con:settings/>
+  </con:subscribeOperation>
+  <con:publishOperation name="Publish" id="930d694d-e88a-4196-92a1-28a2a2368a34">
+    <con:settings/>
+  </con:publishOperation>
+</con:channel>

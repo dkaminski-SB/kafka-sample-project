@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" id="d6ef18fd-b268-4d21-9636-3e8721a4b655" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="example.avroSchema.topic - Consumer" searchProperties="true" timeout="0">
+  <con:settings id="0f192cc5-3477-4a94-9461-448dc6b427d8">
+    <con:setting id="3f1e9db7-7308-4142-9c5f-0e8cc6bfb085fileName">example.avroSchema.topic---Consumer</con:setting>
+    <con:setting id="d6ef18fd-b268-4d21-9636-3e8721a4b655fileName">example.avroSchema.topic---Consumer</con:setting>
+  </con:settings>
+  <con:testStep type="multiConfigureTestStep" name="API Subscriber" id="267d12f3-dce3-4a66-b875-cee1c1828ad8">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaSubscribeTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaSubscribeStep>
+        <con:operationId>f0651d42-71f3-43e9-9b7a-de7c2998455f</con:operationId>
+        <con:operationName>Subscribe</con:operationName>
+        <con:channelName>example.avroSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry>
+          <con:url>http://localhost:8085</con:url>
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:schemaRegistry>
+        <con:messageType>JSON via Avro (Confluent)</con:messageType>
+        <con:keyType>JSON</con:keyType>
+        <con:closeConditionType>ANY_CONDITION</con:closeConditionType>
+        <con:maxIdleTime>10</con:maxIdleTime>
+        <con:maxMessagesReceived>20</con:maxMessagesReceived>
+        <con:maxRunTime>60</con:maxRunTime>
+        <con:ignoreMessagesBeforeConnect>false</con:ignoreMessagesBeforeConnect>
+      </con:kafkaSubscribeStep>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

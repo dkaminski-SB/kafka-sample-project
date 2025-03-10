@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" id="a9d65aa6-db8f-416c-9c1c-67e432294b96" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="example.avroSchema.topic - Producer - Single request" searchProperties="true" timeout="0">
+  <con:settings id="88c80ebc-56ca-483d-9d57-7130a4395867">
+    <con:setting id="5d74ce1d-d6b7-4325-b317-3ced430878f6fileName">example.avroSchema.topic---Producer---Single-request</con:setting>
+    <con:setting id="a9d65aa6-db8f-416c-9c1c-67e432294b96fileName">example.avroSchema.topic---Producer---Single-request</con:setting>
+  </con:settings>
+  <con:testStep type="multiConfigureTestStep" name="API Publisher - Expected message" id="36f68450-6755-421b-a311-09dfed4282f2">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaPublishTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaPublishStep>
+        <con:operationId>930d694d-e88a-4196-92a1-28a2a2368a34</con:operationId>
+        <con:operationName>Publish</con:operationName>
+        <con:channelName>example.avroSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry>
+          <con:url>http://localhost:8085</con:url>
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:schemaRegistry>
+        <con:messageType>JSON via Avro (Confluent)</con:messageType>
+        <con:keyType>JSON via Avro (Confluent)</con:keyType>
+        <con:message>{
+	"first_name" : "Dave",
+	"favorite_city" : "Wrocław",
+	"favorite_number" : {"int": 7},
+	"favorite_color" : {"string": "Green"}
+}</con:message>
+        <con:parameters>
+          <con:parameter>
+            <con:name>Key</con:name>
+            <con:value/>
+            <con:type>Kafka</con:type>
+          </con:parameter>
+        </con:parameters>
+      </con:kafkaPublishStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="multiConfigureTestStep" name="API Publisher - Other message" id="abdf555d-d139-48b7-9449-8ca78c4f1a11" disabled="true">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaPublishTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaPublishStep>
+        <con:operationId>930d694d-e88a-4196-92a1-28a2a2368a34</con:operationId>
+        <con:operationName>Publish</con:operationName>
+        <con:channelName>example.avroSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry/>
+        <con:messageType>JSON via Avro (Confluent)</con:messageType>
+        <con:keyType>JSON</con:keyType>
+        <con:message>{
+	"first_name" : "Becky",
+	"favorite_city" : "Oslo",
+	"favorite_number" : { "int": 4 },
+	"favorite_color" : { "string": "Pink" }
+}</con:message>
+        <con:parameters>
+          <con:parameter>
+            <con:name>Key</con:name>
+            <con:value/>
+            <con:type>Kafka</con:type>
+          </con:parameter>
+        </con:parameters>
+      </con:kafkaPublishStep>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>
