@@ -8,3 +8,5 @@ Kafka---No-Shema---Scripts\example.noSchema.topic---Producer---Single-request.xm
 Kafka---Avro-Schema\example.avroSchema.topic---Consumer.xml
 Kafka---Avro-Schema\example.avroSchema.topic---Producer---Single-request.xml
 Kafka---Avro-Schema\example.avroSchema.topic---Producer.xml
+Kafka---Avro-Schema---Scripts\example.avroSchema.topic---Consumer.xml
+Kafka---Avro-Schema---Scripts\example.avroSchema.topic---Producer---Single-request.xml
