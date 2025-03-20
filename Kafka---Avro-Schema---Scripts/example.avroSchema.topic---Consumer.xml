@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" id="be6fe670-2686-4bb5-a7c6-7ace535ba311" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="example.avroSchema.topic - Consumer" searchProperties="true" timeout="0">
+  <con:settings id="0f192cc5-3477-4a94-9461-448dc6b427d8">
+    <con:setting id="3f1e9db7-7308-4142-9c5f-0e8cc6bfb085fileName">example.avroSchema.topic---Consumer</con:setting>
+    <con:setting id="ca2d2580-9260-47f7-94a3-f730e9b184cffileName">example.avroSchema.topic---Consumer</con:setting>
+    <con:setting id="be6fe670-2686-4bb5-a7c6-7ace535ba311fileName">example.avroSchema.topic---Consumer</con:setting>
+  </con:settings>
+  <con:testStep type="groovy" name="Modify Subscriber Settins" id="42f81821-1764-45d1-aae4-c1ce325d4749" disabled="true">
+    <con:settings/>
+    <con:config>
+      <script>//import org.json.JSONObject
+//def endpoint = context.expand( '${API Subscriber#endpoint}' ) // endpoint
+//def channel = context.expand( '${API Subscriber#channel}' ) // topic
+
+//def i = context.expand( '${#TestCase#i}' )
+//def data = context.expand( '${API Subscriber#data#$[${#TestCase#i}]}' )
+
+// Script helps to change basic settings for Subscriber Test Step
+
+def kafkaStepName = "API Subscriber"
+def maxIdle =  3
+def maxMessagesRecived = 5
+def maxRunTime = 20
+
+//
+//def connectionSettings = context.expand( '${API Subscriber#connectionSettings#$[\'schemaRegistryUrl\']}' )
+//testRunner.testCase.getTestStepByName(kafkaStepName).setMaxIdleTime(maxIdleTime)
+//log.info "Currently for \"" + kafkaStepName + "\" > set Maximum Idle Time is: " +  testRunner.testCase.getTestStepByName(kafkaStepName).getMaxIdleTime()
+//
+//testRunner.testCase.getTestStepByName(kafkaStepName).setMaxMessagesReceived(maxMessagesRecived)
+//log.info "Currently for \"" + kafkaStepName + "\" > Maximum no. of Messages Received is: " + testRunner.testCase.getTestStepByName(kafkaStepName).getMaxMessagesReceived()
+//
+//testRunner.testCase.getTestStepByName(kafkaStepName).setMaxRunTime(maxRunTime)
+//log.info "Currently for \"" + kafkaStepName + "\" > Maximum Test Step Run Time is:   " + testRunner.testCase.getTestStepByName(kafkaStepName).getMaxRunTime()
+
+def kafkaStepName = "API Subscriber"
+def schemaRegistryEndpoint = "http://localhost:8085"
+testRunner.testCase.getTestStepByName(kafkaStepName).getConnectionSettings().setSchemaRegistryUrl(schemaRegistryEndpoint)</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="multiConfigureTestStep" name="API Subscriber" id="107a8c00-f24d-46e6-a92d-e00101775184">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" activeStep="kafkaSubscribeTestStep" xsi:type="con:MultiConfigurationStep">
+      <con:kafkaSubscribeStep>
+        <con:operationId>f0651d42-71f3-43e9-9b7a-de7c2998455f</con:operationId>
+        <con:operationName>Subscribe</con:operationName>
+        <con:channelName>example.avroSchema.topic</con:channelName>
+        <con:serviceName>Kafka Broker0</con:serviceName>
+        <con:endpoint>localhost:9092</con:endpoint>
+        <con:connectionProperties/>
+        <con:schemaRegistry>
+          <con:url>http://localhost:8085</con:url>
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:schemaRegistry>
+        <con:messageType>JSON via Avro (Confluent)</con:messageType>
+        <con:keyType>JSON</con:keyType>
+        <con:closeConditionType>ANY_CONDITION</con:closeConditionType>
+        <con:maxIdleTime>10</con:maxIdleTime>
+        <con:maxMessagesReceived>50</con:maxMessagesReceived>
+        <con:maxRunTime>60</con:maxRunTime>
+        <con:ignoreMessagesBeforeConnect>false</con:ignoreMessagesBeforeConnect>
+      </con:kafkaSubscribeStep>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>
