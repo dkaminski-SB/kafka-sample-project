@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:channel xmlns:con="http://eviware.com/soapui/config" name="example.avroSchema.topic" id="f7991da2-8cd4-464e-8875-fb811fa84778">
+<con:channel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config" name="example.avroSchema.topic" id="f7991da2-8cd4-464e-8875-fb811fa84778">
   <con:settings>
     <con:setting id="f7991da2-8cd4-464e-8875-fb811fa84778fileName">example.avroSchema.topic</con:setting>
   </con:settings>
