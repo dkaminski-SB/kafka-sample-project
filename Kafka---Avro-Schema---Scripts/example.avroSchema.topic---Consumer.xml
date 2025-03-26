@@ -5,7 +5,7 @@
     <con:setting id="ca2d2580-9260-47f7-94a3-f730e9b184cffileName">example.avroSchema.topic---Consumer</con:setting>
     <con:setting id="be6fe670-2686-4bb5-a7c6-7ace535ba311fileName">example.avroSchema.topic---Consumer</con:setting>
   </con:settings>
-  <con:testStep type="groovy" name="Modify Subscriber Settins" id="42f81821-1764-45d1-aae4-c1ce325d4749" disabled="true">
+  <con:testStep type="groovy" name="Modify Subscriber Settings" id="42f81821-1764-45d1-aae4-c1ce325d4749" disabled="true">
     <con:settings/>
     <con:config>
       <script>//import org.json.JSONObject
